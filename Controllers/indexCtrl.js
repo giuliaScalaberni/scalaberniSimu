@@ -14,7 +14,7 @@ $(document).ready(function(){
     });
     
     //se genere cambia, listo sottogenere
-    $('#generi').on('change', function(res){
+    $('#generi').on('change', function(){
         $.getJSON('../Models/getSottogeneri.php', {idGenere: $("#generi").val()},function(ris){
             var sotto=$("#sottogeneri");
             sotto.empty();
@@ -26,15 +26,28 @@ $(document).ready(function(){
         });
     });
     
-  $('#sottogeneri').on('change', function(res){
-        $.getJSON('../Models/getArtisti.php',function(ris){
-            var artisti=$("#artisti");
-            artisti.empty();
-            artisti.append('<option value="null" selected>--Seleziona artista--</option>');
-            $.each(ris, function(k, v){
-               var list=$('<option value='+v['idArtista']+'>'+v['nome']+'</option>');
-               artisti.append(list);
-            });
+  //se genere cambia, listo sottogenere
+    $('#btnArtisti').click(function(){
+        $.getJSON('../Models/getArtisti.php', {idGenere: $("#sottogeneri").val()},function(ris){
+            var i=0;
+             var table=$('<br> <table id="tableArt" style="border:solid 2px; border-color:green" class="table"><tbody></tbody></table>');
+                table.append('<thead style="border:solid 2px; border-color:green"><tr><th>Nome</th><th>BIO</th><th>Anni</th><th></th></tr></thead>');
+                $.each(ris,function(k,v){
+					i++;
+                    var row=$('<tr id="row"+'+v["nome"]+'><td>'+v['biografia']+'</td><td>'+v['anni_attività']+'</td><td> <button type="button" onClick="open(this.id)" id='+v["idArtista"]+'  class="trash btn btn-default"><span class="glyphicon glyphicon-search"></span></button></td></tr>');
+                  	table.append(row);
+                });
+							if (i==0){
+								$("#contentArtisti").empty();
+								$("#contentArtisti").append("<label>NOTHING INSERTED BY YOU!</label>");
+								
+							}
+							else{
+								$("#contentArtisti").empty();
+                                $("#contentArtisti").append(table);
+							
+								}
+          
         });
     });
 });
