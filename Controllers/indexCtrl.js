@@ -28,13 +28,13 @@ $(document).ready(function(){
     
   //se genere cambia, listo sottogenere
     $('#btnArtisti').click(function(){
-        $.getJSON('../Models/getArtisti.php', {idGenere: $("#sottogeneri").val()},function(ris){
+        $.getJSON('../Models/getArt.php', function(ris){
             var i=0;
              var table=$('<br> <table id="tableArt" style="border:solid 2px; border-color:green" class="table"><tbody></tbody></table>');
                 table.append('<thead style="border:solid 2px; border-color:green"><tr><th>Nome</th><th>BIO</th><th>Anni</th><th></th></tr></thead>');
                 $.each(ris,function(k,v){
 					i++;
-                    var row=$('<tr id="row"+'+v["nome"]+'><td>'+v['biografia']+'</td><td>'+v['anni_attività']+'</td><td> <button type="button" onClick="open(this.id)" id='+v["idArtista"]+'  class="trash btn btn-default"><span class="glyphicon glyphicon-search"></span></button></td></tr>');
+                    var row=$('<tr id="row"+'+v["idArtista"]+'><td>'+v['nome']+'</td><td>'+v['biografia']+'</td><td>'+v['anni_attività']+'</td><td> <button type="button" onClick="open(this.id)" id='+v["idArtista"]+'  class="trash btn btn-default"><span class="glyphicon glyphicon-search"></span></button></td></tr>');
                   	table.append(row);
                 });
 							if (i==0){
