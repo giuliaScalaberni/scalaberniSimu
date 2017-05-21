@@ -28,7 +28,7 @@ $(document).ready(function(){
     
   //se genere cambia, listo sottogenere
     $('#btnArtisti').click(function(){
-        $.getJSON('../Models/getArt.php', function(ris){
+        $.getJSON('../Models/getArt.php',{idGenere: $("#generi").val()},function(ris){
             var i=0;
              var table=$('<br> <table id="tableArt" style="border:solid 2px; border-color:green" class="table"><tbody></tbody></table>');
                 table.append('<thead style="border:solid 2px; border-color:green"><tr><th>Nome</th><th>BIO</th><th>Anni</th><th></th></tr></thead>');
@@ -50,4 +50,5 @@ $(document).ready(function(){
           
         });
     });
+   
 });

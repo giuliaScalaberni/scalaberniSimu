@@ -5,7 +5,7 @@
 	catch(PDOException $e){
 		echo 'CONNECTION FAILED: '.$e->getMessage();
 	}
-    $stmt = $connect->prepare("SELECT * FROM artista");
+    $stmt = $connect->prepare("SELECT nome FROM artista JOIN sottogenere_Artista ON Artista_idArtista=idArtista WHERE Genere_idGenere='".$_GET['idGenere']."'");
     if ($stmt->execute()) {
         echo json_encode($stmt->fetchAll());
     }

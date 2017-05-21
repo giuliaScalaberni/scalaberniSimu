@@ -7,7 +7,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script src="../Controllers/indexCtrl.js"></script>
+		<script src="../Controllers/autoreCtrl.js"></script>
 	    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" />
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -15,7 +15,7 @@
 	</head>
 	<body>
 			<div class="col-xs-6 col-md-4" >
-				<button type="button"  id="btnArt" class="btn btn-success">Inserisci artista</button>
+				<button type="button" id="btnArt" class="btn btn-success">Inserisci artista</button>
 				<br>
 				<button type="button" id="btnAlb" class="btn btn-success">Inserisci album</button>
 				<br>
@@ -23,32 +23,16 @@
 				<br>
 				<button type="button" id="btnBra" class="btn btn-success">Inserisci brano</button>
 				<br>
-				<button type="button" onclick="location.href='insertAutore.html'" id="btnAut" class="btn btn-success">Inserisci autore</button>
+				<button type="button" id="btnHome" onclick="location.href='index.html'" class="btn btn-default">Home</button>
 				
 			</div>
 			<div  class="col-xs-6 col-md-4" >
 				<h1 class="text-center">GIULIA RECORDING LABEL WEBApp</h1>
-				
-				<h4>Generi registrati</h4>
-				<div class="row-fluid">
-			
-					<div>
-						<label>Filtra Genere</label>
-						<select name="dropdownGen" id="generi">
-							 <option value="null" selected>--Seleziona Genere--</option>
-						</select>
-						 <select  name="dropdownSot" id="sottogeneri">
-							<option value="null" selected>--Seleziona SOTTOGEN--</option>
-						</select>
-						<!--select id="artisti">
-					 		<option value="null" selected>--Seleziona ARTISTA--</option>
-						</select-->
-						<button class="btn btn-default" id="btnArtisti">Artisti</button>
-					</div>
-				</div>
-				<div id="contentArtisti">
-					
-				</div>
+				<hr>
+				<label>Nome Autore</label>
+			    <input type="text" id="nomeAut"></input>
+			    <hr>
+			    <button type="button" class="btn btn-danger" id="btnInsert">Inserisci</button>
 			</div>
 		<div class="col-xs-6 col-md-4" ></div>
 	</body>
